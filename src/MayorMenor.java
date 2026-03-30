@@ -4,8 +4,14 @@ import java.util.ArrayList;
 
 public class MayorMenor {
     public static void main(String[] args) {
+        //==============================================================================================================
+        //              CODIGO MEJORADO A PARTIR DEL CODIGO ANTERIOR QUE EMPIEZA DESDE LA LINEA 68
+        //==============================================================================================================
+
         Scanner sc= new Scanner(System.in);
         int dato;
+        double cajita = 0;
+
         do {
             //Actualizare el codigo para que puedan ingresar datos con un limite dinamico
             System.out.println("Tienes que ingresar un numero no menor ni igual al numero 1!");
@@ -24,9 +30,36 @@ public class MayorMenor {
             lista.add(sc.nextDouble());
         }
 
-        //USAR FOR ANIDADO
 
-        System.out.println();
+        //Usamos un for anidado para comparar un elmento con el que sigue algo similar al metodo burbuja
+        for (int i = 0; i < lista.size() - 1; i++) {
+            for (int j = 0; j < lista.size() - 1 - i; j++) {
+                // Comparamos el elemento actual con el siguiente
+                if (lista.get(j) > lista.get(j + 1)) {
+                    // Intercambio usando la variable "cajita"
+                    cajita = lista.get(j);//Aqui estamos guardando el valor para no perderlo al agregarle un valor nuevo
+                    lista.set(j, lista.get(j + 1));
+                    lista.set(j + 1, cajita);
+                }
+            }
+        }
+
+
+        System.out.println(lista);//Lista ordenada de manera ascendiente
+
+        //Reutilizamos el mismo codigo anterior solo alterando el orden
+        for (int i = 0; i < lista.size() - 1; i++) {
+            for (int j = 0; j < lista.size() - 1 - i; j++) {
+                if (lista.get(j) < lista.get(j + 1)) {
+                    cajita = lista.get(j);
+                    lista.set(j, lista.get(j + 1));
+                    lista.set(j + 1, cajita);
+                }
+            }
+        }
+        System.out.println(lista);//De manera descendiente
+
+        //
         /*
         ================================================================================================================
                             CODIGO QUE CUMPLE CON LOS CRITERIOS PERO SOLO RECIBE 3 DATOS NUMERICOS
